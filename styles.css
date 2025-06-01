@@ -1,0 +1,348 @@
+/* 1. CSS Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 12. Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 2. Base body styles */
+body {
+  font-family: 'Inter', sans-serif;
+  color: #333;
+  background-color: #fff;
+  line-height: 1.6;
+}
+
+/* 3. Generic section styling */
+section {
+  padding: 4rem 2rem;
+}
+section h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #222;
+}
+
+/* 4. Header/Nav styling */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: rgba(255,255,255,0.95);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  z-index: 1000;
+}
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+}
+.logo-container img {
+  max-width: 160px;
+  height: auto;
+}
+
+/* Hero section */
+#hero {
+  padding: 3rem 0;
+  background: #fff;
+}
+.hero-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 2rem;
+}
+.hero-left {
+  flex: 1;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+.hero-left h1 {
+  font-family: 'Playfair Display', 'Merriweather', serif;
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #222;
+  margin-bottom: 1rem;
+}
+.hero-left p {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 1rem;
+}
+.hero-left ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 2rem;
+  margin-top: 0;
+}
+.hero-left ul li {
+  margin-bottom: 0.75rem;
+  font-size: 1.125rem;
+  color: #555;
+}
+.btn-outline {
+  border: 2px solid #007BFF;
+  background: transparent;
+  color: #007BFF;
+  text-transform: uppercase;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  padding: 0.75rem 2rem;
+  border-radius: 0 30px 30px 0;
+  transition: background-color 0.3s, color 0.3s;
+  display: inline-block;
+  margin-top: 0.5rem;
+  text-decoration: none;
+}
+.btn-outline:hover {
+  background-color: #007BFF;
+  color: #fff;
+  text-decoration: none;
+}
+.hero-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+.logo-badge {
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background-color: rgba(255, 206, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 2.5rem auto;
+  position: relative;
+}
+.logo-badge::before {
+  content: "";
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  border: 4px dashed rgba(255, 206, 0, 0.25);
+  top: -10px;
+  left: -10px;
+}
+.logo-badge img {
+  max-width: 140px;
+  width: 100%;
+  height: auto;
+}
+.btn-logo {
+  display: inline-block;
+  margin: 0;
+  padding: 0.75rem 1.75rem;
+  border-radius: 50px;
+  background-color: rgba(255, 206, 0, 0.5);
+  color: #222222;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  text-transform: uppercase;
+  text-align: center;
+  border: 2px solid rgba(255, 206, 0, 0.8);
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  max-width: 220px;
+  margin-top: 2.5rem;
+}
+.btn-logo:hover {
+  background-color: rgba(255, 206, 0, 0.8);
+  color: #ffffff;
+  border-color: rgba(255, 206, 0, 1);
+  text-decoration: none;
+}
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  #hero {
+    padding: 4rem 0;
+  }
+  .hero-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 1rem;
+  }
+  .hero-left {
+    width: 100%;
+    align-items: center;
+    margin-bottom: 3rem;
+    padding: 1.5rem;
+    text-align: center;
+  }
+  .hero-left h1 {
+    font-size: 2.25rem;
+  }
+  .hero-left ul {
+    margin: 1rem auto 2rem auto;
+    padding-left: 1.25rem;
+    text-align: left;
+  }
+  .hero-left ul li {
+    font-size: 1rem;
+  }
+  .btn-outline {
+    width: 100%;
+    max-width: 240px;
+    margin: 0 auto;
+    display: inline-block;
+  }
+  .hero-right {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+  .logo-badge {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 2rem;
+  }
+  .logo-badge::before {
+    width: 220px;
+    height: 220px;
+    top: -10px;
+    left: -10px;
+  }
+  .logo-badge img {
+    max-width: 100px;
+  }
+  .btn-logo {
+    max-width: 160px;
+    font-size: 0.95rem;
+    margin-top: 2rem;
+  }
+}
+/* Remove old hero image/text rules that conflict */
+.hero-left img, .hero-right h2, .hero-right p, .hero-right ul, .hero-left .btn-primary, .hero-left .btn-primary:hover {
+  display: none !important;
+}
+/* --- END HERO SECTION --- */
+
+/* Remove old nav styles */
+nav, nav ul, nav a, nav a:hover {
+  all: unset;
+}
+
+/* Remove main padding-top since header is gone */
+main {
+  padding-top: 0;
+}
+
+/* 6. About section */
+#about p {
+  max-width: 600px;
+  margin: 0 auto;
+  color: #444;
+}
+
+/* 7. Services section */
+.service-cards {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+.service-card {
+  flex: 1 1 calc(33.333% - 2rem);
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  min-width: 250px;
+}
+
+/* 8. Testimonials section */
+#testimonials blockquote {
+  font-style: italic;
+  color: #555;
+  border-left: 4px solid #007BFF;
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+}
+#testimonials cite {
+  display: block;
+  color: #888;
+  font-size: 0.95rem;
+  margin-top: 0.5rem;
+}
+
+/* 9. Contact form */
+#contact form {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+#contact input,
+#contact textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+#contact input:focus,
+#contact textarea:focus {
+  outline: none;
+  border-color: #007BFF;
+}
+#contact button[type="submit"] {
+  background-color: #007BFF;
+  color: #fff;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+#contact button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/* 10. Footer styling */
+footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  background-color: #f8f8f8;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+/* 11. Responsive adjustments */
+@media (max-width: 768px) {
+  #hero h1 {
+    font-size: 2.25rem;
+  }
+  #hero p {
+    font-size: 1rem;
+  }
+  .service-card {
+    flex: 1 1 100%;
+  }
+  section {
+    padding: 2.5rem 1rem;
+  }
+} 
