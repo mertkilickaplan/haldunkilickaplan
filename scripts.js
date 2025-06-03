@@ -4,10 +4,26 @@
 document.addEventListener('DOMContentLoaded', function() {
   const wrapper = document.querySelector('.slides-wrapper');
   if (!wrapper) return;
-  const slides = Array.from(document.querySelectorAll('.slide'));
+  const slides = Array.from(wrapper.querySelectorAll('.slide'));
   const prevButton = document.querySelector('.prev-arrow');
   const nextButton = document.querySelector('.next-arrow');
-  let slideWidth = slides[0].getBoundingClientRect().width + parseInt(getComputedStyle(slides[0]).marginRight);
+
+  // Calculate slide width including gap
+  function getSlideWidth() {
+    const slide = slides[0];
+    const slideRect = slide.getBoundingClientRect();
+    // Try to get gap from wrapper, fallback to marginRight
+    let gap = 0;
+    const wrapperStyle = getComputedStyle(wrapper);
+    if (wrapperStyle.gap) {
+      gap = parseFloat(wrapperStyle.gap);
+    } else {
+      gap = parseFloat(getComputedStyle(slide).marginRight);
+    }
+    return slideRect.width + gap;
+  }
+
+  let slideWidth = getSlideWidth();
   let index = slides.length; // start at first real slide after cloned prefix
 
   // Clone all slides twice: prefix and suffix for infinite loop
@@ -18,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
   suffixSlides.forEach(clone => wrapper.append(clone));
 
   // Update slides array to include clones
-  const allSlides = Array.from(document.querySelectorAll('.slide'));
+  const allSlides = Array.from(wrapper.querySelectorAll('.slide'));
   const updateWrapperPosition = () => {
     wrapper.style.transform = `translateX(-${slideWidth * index}px)`;
   };
@@ -28,14 +44,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Handle window resize: recalculate slideWidth and reposition
   window.addEventListener('resize', () => {
-    slideWidth = allSlides[0].getBoundingClientRect().width + parseInt(getComputedStyle(allSlides[0]).marginRight);
+    slideWidth = getSlideWidth();
     updateWrapperPosition();
   });
 
   // Move to next slide
   function moveNext() {
     index++;
-    wrapper.style.transition = 'transform 0.5s ease-in-out';
+    wrapper.style.transition = 'transform 0.45s ease-in-out';
     updateWrapperPosition();
     // After transition, if at end of suffix, jump immediately to real first slide
     wrapper.addEventListener('transitionend', function checkNext() {
@@ -51,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Move to previous slide
   function movePrev() {
     index--;
-    wrapper.style.transition = 'transform 0.5s ease-in-out';
+    wrapper.style.transition = 'transform 0.45s ease-in-out';
     updateWrapperPosition();
     // After transition, if at start of prefix, jump immediately to real last slide
     wrapper.addEventListener('transitionend', function checkPrev() {
