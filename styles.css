@@ -334,4 +334,97 @@ footer {
   section {
     padding: 2.5rem 1rem;
   }
+}
+
+/* References Slider Section */
+#references {
+  padding: 4rem 2rem;
+  background-color: #ffffff;
+  text-align: center;
+}
+#references h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #222222;
+  margin-bottom: 2rem;
+}
+.references-slider {
+  position: relative;
+  overflow: hidden;
+  max-width: 100%;
+  margin: 0 auto;
+}
+.slides-wrapper {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+.slide {
+  flex: 0 0 300px;
+  margin-right: 1rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  text-align: left;
+}
+.slide:last-child {
+  margin-right: 0;
+}
+.project-name {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #222222;
+  margin-bottom: 0.5rem;
+}
+.project-details {
+  font-size: 1rem;
+  color: #555555;
+  line-height: 1.4;
+}
+.slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #007BFF;
+  color: #ffffff;
+  border: none;
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+.slider-arrow:hover {
+  background-color: #0056b3;
+}
+.prev-arrow {
+  left: 1rem;
+}
+.next-arrow {
+  right: 1rem;
+}
+@media (max-width: 1024px) {
+  .slide {
+    flex: 0 0 250px;
+    margin-right: 0.75rem;
+  }
+}
+@media (max-width: 768px) {
+  .slide {
+    flex: 0 0 200px;
+    margin-right: 0.5rem;
+  }
+}
+@media (max-width: 480px) {
+  .slide {
+    flex: 0 0 160px;
+    margin-right: 0.5rem;
+  }
+  .slider-arrow {
+    width: 2rem;
+    height: 2rem;
+  }
 } 
