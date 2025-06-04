@@ -374,17 +374,79 @@
           <p class="project-details">İş merkezi, rezidans inşaatı temel izolasyon işleri ve danışmanlık, Bağdat</p>
         </div>
       </div>
-      <button class="slider-arrow prev-arrow" aria-label="Previous">&#x276E;</button>
-      <button class="slider-arrow next-arrow" aria-label="Next">&#x276F;</button>
+      <button class="slider-arrow prev-arrow" aria-label="Previous">
+        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M11.354 1.646a.5.5 0 0 1 0 .708L6.707 7l4.647 4.646a.5.5 0 0 1-.708.708l-5-5a.5.5 0 0 1 0-.708l5-5a.5.5 0 0 1 .708 0z"/>
+        </svg>
+      </button>
+      <button class="slider-arrow next-arrow" aria-label="Next">
+        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M4.646 14.354a.5.5 0 0 1 0-.708L9.293 9 4.646 4.354a.5.5 0 1 1 .708-.708l5 5a.5.5 0 0 1 0 .708l-5 5a.5.5 0 0 1-.708 0z"/>
+        </svg>
+      </button>
+      <div class="dots-container"></div>
     </div>
-  </section>
-  <section id="testimonials">
-    <h2>Referanslar</h2>
-    <p>Müşteri yorumları burada yer alacak. (Referanslar placeholder)</p>
   </section>
   <section id="contact">
     <h2>İletişim</h2>
-    <p>İletişim formu veya bilgiler burada olacak. (İletişim placeholder)</p>
+    <div class="call-button-container">
+      <a href="tel:+905338100806" class="btn-call">
+        <span class="btn-call-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style="vertical-align:middle;margin-right:8px;" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 3.5A2 2 0 0 1 4.5 1.5h2A2 2 0 0 1 8.5 3.5v1A2 2 0 0 1 7.5 6.5l-.5.5a13.5 13.5 0 0 0 6 6l.5-.5a2 2 0 0 1 2-1h1a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2A15.5 15.5 0 0 1 2.5 3.5z" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        Bizi Arayın
+      </a>
+    </div>
+    <hr class="contact-divider" />
+    <div class="contact-form-container">
+      <form id="contactForm" class="contact-form" enctype="multipart/form-data" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="firstName">İsim<span class="required">*</span></label>
+            <input type="text" id="firstName" name="firstName" required />
+            <span class="error-message">İsim zorunludur.</span>
+          </div>
+          <div class="form-group">
+            <label for="lastName">Soyisim<span class="required">*</span></label>
+            <input type="text" id="lastName" name="lastName" required />
+            <span class="error-message">Soyisim zorunludur.</span>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="phone">Telefon Numarası<span class="required">*</span></label>
+            <input type="tel" id="phone" name="phone" pattern="^\+?\d{10,15}$" required placeholder="+905xxxxxxxxx" />
+            <span class="error-message">Geçerli bir telefon numarası girin.</span>
+          </div>
+          <div class="form-group">
+            <label for="email">Mail<span class="required">*</span></label>
+            <input type="email" id="email" name="email" required />
+            <span class="error-message">Geçerli bir e-posta girin.</span>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group full-width">
+            <label for="message">Mesaj<span class="required">*</span></label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+            <span class="error-message">Mesaj zorunludur.</span>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group full-width">
+            <label for="attachment">Dosya Ekle (opsiyonel)</label>
+            <div class="custom-file-input-wrapper">
+              <input type="file" id="attachment" name="attachment" accept=".pdf,.doc,.docx,.jpg,.png" class="custom-file-input" />
+              <label for="attachment" class="custom-file-label">Dosya Seç</label>
+              <span class="file-chosen" id="file-chosen">Dosya seçilmedi</span>
+            </div>
+            <span class="file-help">PDF, DOC, JPG veya PNG formatında olabilir.</span>
+          </div>
+        </div>
+        <div class="form-row">
+          <button type="submit" class="btn-submit">Gönder</button>
+        </div>
+      </form>
+    </div>
   </section>
 
   <!-- Footer will go here -->
