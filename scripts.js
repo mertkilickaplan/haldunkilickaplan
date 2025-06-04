@@ -165,60 +165,38 @@ document.addEventListener('DOMContentLoaded', function() {
 
   contactForm.addEventListener('submit', function(e) {
     let isValid = true;
-
-    // Her field için kontrol
     fields.forEach(field => {
       const input = document.getElementById(field.id);
       const errorEl = input.parentElement.querySelector('.error-message');
       if (!input.checkValidity()) {
         errorEl.textContent = field.errorMsg;
-        errorEl.classList.add('visible');
+        errorEl.classList.add('error-visible');
         isValid = false;
       } else {
-        errorEl.classList.remove('visible');
+        errorEl.classList.remove('error-visible');
       }
     });
 
-    // Telefon için ek pattern doğrulaması
-    const phoneInput = document.getElementById('phone');
+    const phoneInput   = document.getElementById('phone');
     const phonePattern = /^05\d{9}$/;
     const phoneErrorEl = phoneInput.parentElement.querySelector('.error-message');
     if (phoneInput.value && !phonePattern.test(phoneInput.value.trim())) {
       phoneErrorEl.textContent = 'Geçerli bir telefon numarası girin.';
-      phoneErrorEl.classList.add('visible');
+      phoneErrorEl.classList.add('error-visible');
       isValid = false;
     }
 
-    // E-posta için ek kontrol
-    const emailInput = document.getElementById('email');
+    const emailInput   = document.getElementById('email');
     const emailErrorEl = emailInput.parentElement.querySelector('.error-message');
     if (emailInput.value && !emailInput.checkValidity()) {
       emailErrorEl.textContent = 'Geçerli bir e-posta girin.';
-      emailErrorEl.classList.add('visible');
+      emailErrorEl.classList.add('error-visible');
       isValid = false;
     }
 
     if (!isValid) {
-      e.preventDefault();
-      return;
+      e.preventDefault(); // Only prevent submission when validation fails
     }
-
-    // Form verilerini konsola yaz
-    const submittedData = {
-      firstName: document.getElementById('firstName').value.trim(),
-      lastName:  document.getElementById('lastName').value.trim(),
-      phone:     document.getElementById('phone').value.trim(),
-      email:     document.getElementById('email').value.trim(),
-      message:   document.getElementById('message').value.trim(),
-      attachment: document.getElementById('attachment').files[0] || null
-    };
-    console.log('Form başarıyla gönderildi:', submittedData);
-
-    // Formu sıfırla ve kullanıcıya bilgi ver
-    contactForm.reset();
-    var fileChosen = document.getElementById('file-chosen');
-    if (fileChosen) fileChosen.textContent = 'Dosya seçilmedi';
-    // alert('Mesajınız başarıyla gönderildi. Teşekkürler!');
-    // Do not prevent default if valid, so mailto: works
+    // If isValid remains true, allow default form submit to Formspree
   });
 }); 
