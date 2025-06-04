@@ -164,7 +164,6 @@ document.addEventListener('DOMContentLoaded', function() {
   ];
 
   contactForm.addEventListener('submit', function(e) {
-    e.preventDefault();
     let isValid = true;
 
     // Her field için kontrol
@@ -182,7 +181,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Telefon için ek pattern doğrulaması
     const phoneInput = document.getElementById('phone');
-    const phonePattern = /^\+?\d{10,15}$/;
+    const phonePattern = /^05\d{9}$/;
     const phoneErrorEl = phoneInput.parentElement.querySelector('.error-message');
     if (phoneInput.value && !phonePattern.test(phoneInput.value.trim())) {
       phoneErrorEl.textContent = 'Geçerli bir telefon numarası girin.';
@@ -200,6 +199,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     if (!isValid) {
+      e.preventDefault();
       return;
     }
 
@@ -218,6 +218,7 @@ document.addEventListener('DOMContentLoaded', function() {
     contactForm.reset();
     var fileChosen = document.getElementById('file-chosen');
     if (fileChosen) fileChosen.textContent = 'Dosya seçilmedi';
-    alert('Mesajınız başarıyla gönderildi. Teşekkürler!');
+    // alert('Mesajınız başarıyla gönderildi. Teşekkürler!');
+    // Do not prevent default if valid, so mailto: works
   });
 }); 
