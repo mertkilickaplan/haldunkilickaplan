@@ -2,148 +2,7 @@
 // (c) minimalist, vanilla JS
 
 document.addEventListener('DOMContentLoaded', function() {
-  const wrapper = document.querySelector('.slides-wrapper');
-  if (!wrapper) return;
-  const slides = Array.from(wrapper.querySelectorAll('.slide'));
-  const prevButton = document.querySelector('.prev-arrow');
-  const nextButton = document.querySelector('.next-arrow');
-  const dotsContainer = document.querySelector('.dots-container');
-  let autoplayInterval = null;
-
-  // Responsive: how many cards per view?
-  function getCardsPerView() {
-    if (window.innerWidth <= 480) return 1;
-    if (window.innerWidth <= 768) return 2;
-    if (window.innerWidth <= 1024) return 3;
-    return 4;
-  }
-
-  // Calculate slide width including gap
-  function getSlideWidth() {
-    const slide = slides[0];
-    const slideRect = slide.getBoundingClientRect();
-    let gap = 0;
-    const wrapperStyle = getComputedStyle(wrapper);
-    if (wrapperStyle.gap) {
-      gap = parseFloat(wrapperStyle.gap);
-    } else {
-      gap = parseFloat(getComputedStyle(slide).marginRight);
-    }
-    return slideRect.width + gap;
-  }
-
-  let slideWidth = getSlideWidth();
-  let cardsPerView = getCardsPerView();
-  let index = slides.length; // start at first real slide after cloned prefix
-
-  // Clone all slides twice: prefix and suffix for infinite loop
-  const totalSlides = slides.length;
-  const prefixSlides = slides.map(slide => slide.cloneNode(true));
-  const suffixSlides = slides.map(slide => slide.cloneNode(true));
-  prefixSlides.forEach(clone => wrapper.prepend(clone));
-  suffixSlides.forEach(clone => wrapper.append(clone));
-
-  // Update slides array to include clones
-  const allSlides = Array.from(wrapper.querySelectorAll('.slide'));
-  const updateWrapperPosition = () => {
-    wrapper.style.transform = `translateX(-${slideWidth * index}px)`;
-  };
-
-  // Dots logic
-  function createDots() {
-    dotsContainer.innerHTML = '';
-    cardsPerView = getCardsPerView();
-    const pageCount = Math.ceil(totalSlides / cardsPerView);
-    for (let i = 0; i < pageCount; i++) {
-      const dot = document.createElement('button');
-      dot.className = 'dot';
-      dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
-      dot.addEventListener('click', () => goToPage(i));
-      dotsContainer.appendChild(dot);
-    }
-    updateDots();
-  }
-  function updateDots() {
-    const dots = dotsContainer.querySelectorAll('.dot');
-    cardsPerView = getCardsPerView();
-    const pageCount = Math.ceil(totalSlides / cardsPerView);
-    let currentPage = Math.floor((index - totalSlides) / cardsPerView);
-    if (currentPage < 0) currentPage = 0;
-    if (currentPage >= pageCount) currentPage = pageCount - 1;
-    dots.forEach((dot, i) => {
-      dot.classList.toggle('active', i === currentPage);
-    });
-  }
-  function goToPage(page) {
-    cardsPerView = getCardsPerView();
-    index = totalSlides + page * cardsPerView;
-    wrapper.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1)';
-    updateWrapperPosition();
-    updateDots();
-  }
-
-  // Initial positioning after DOM load
-  updateWrapperPosition();
-  createDots();
-
-  // Handle window resize: recalculate slideWidth/cardsPerView and reposition
-  window.addEventListener('resize', () => {
-    slideWidth = getSlideWidth();
-    cardsPerView = getCardsPerView();
-    updateWrapperPosition();
-    createDots();
-  });
-
-  // Move to next slide
-  function moveNext() {
-    index++;
-    wrapper.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1)';
-    updateWrapperPosition();
-    // After transition, if at end of suffix, jump immediately to real first slide
-    wrapper.addEventListener('transitionend', function checkNext() {
-      if (index >= totalSlides * 2) {
-        wrapper.style.transition = 'none';
-        index = totalSlides;
-        updateWrapperPosition();
-      }
-      wrapper.removeEventListener('transitionend', checkNext);
-      updateDots();
-    });
-  }
-
-  // Move to previous slide
-  function movePrev() {
-    index--;
-    wrapper.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1)';
-    updateWrapperPosition();
-    // After transition, if at start of prefix, jump immediately to real last slide
-    wrapper.addEventListener('transitionend', function checkPrev() {
-      if (index < totalSlides) {
-        wrapper.style.transition = 'none';
-        index = totalSlides * 2 - 1;
-        updateWrapperPosition();
-      }
-      wrapper.removeEventListener('transitionend', checkPrev);
-      updateDots();
-    });
-  }
-
-  nextButton.addEventListener('click', moveNext);
-  prevButton.addEventListener('click', movePrev);
-
-  // Autoplay logic
-  function startAutoplay() {
-    if (autoplayInterval) clearInterval(autoplayInterval);
-    autoplayInterval = setInterval(moveNext, 5000);
-  }
-  function stopAutoplay() {
-    if (autoplayInterval) clearInterval(autoplayInterval);
-  }
-  startAutoplay();
-  document.querySelector('.references-slider').addEventListener('mouseenter', stopAutoplay);
-  document.querySelector('.references-slider').addEventListener('mouseleave', startAutoplay);
-
-  // ======= Custom File Input Filename Display =======
+  // Custom file input filename display
   var fileInput = document.getElementById('attachment');
   var fileChosen = document.getElementById('file-chosen');
   if (fileInput && fileChosen) {
@@ -152,9 +11,10 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // ======= İletişim Formu Basit Doğrulama (Fade-in error) =======
+  // Contact form validation
   const contactForm = document.getElementById('contactForm');
   if (!contactForm) return;
+  
   const fields = [
     { id: 'firstName',    errorMsg: 'İsim zorunludur.' },
     { id: 'lastName',     errorMsg: 'Soyisim zorunludur.' },
