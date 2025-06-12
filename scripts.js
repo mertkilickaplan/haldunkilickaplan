@@ -135,11 +135,15 @@ function initCarousel() {
     slide.className = 'carousel-slide';
     
     const img = document.createElement('img');
-    // Test amaçlı placeholder kullanıyoruz; gerçek resimler eklendiğinde kaldırın
-    img.src = placeholderImage;
-    img.dataset.src = image.src; // Gerçek resim src'sini data attribute olarak saklıyoruz
+    // Gerçek resim kaynağını doğrudan kullan
+    img.src = image.src;
     img.alt = image.alt;
     img.loading = 'lazy';
+    img.onerror = function() {
+      // Görsel yüklenemezse placeholder kullan
+      this.src = placeholderImage;
+      console.log('Görsel yüklenemedi: ' + image.src);
+    };
     
     slide.appendChild(img);
     carouselTrack.appendChild(slide);
