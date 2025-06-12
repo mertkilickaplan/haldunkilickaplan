@@ -619,7 +619,7 @@ footer {
 .carousel-track {
   display: flex;
   transition: transform 0.5s ease;
-  height: 400px;
+  height: 500px;
 }
 
 .carousel-slide {
@@ -632,7 +632,8 @@ footer {
 .carousel-slide img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  background-color: #f9f9f9;
 }
 
 .carousel-nav {
@@ -689,13 +690,13 @@ footer {
 /* Responsive Carousel */
 @media (max-width: 768px) {
   .carousel-track {
-    height: 300px;
+    height: 400px;
   }
 }
 
 @media (max-width: 480px) {
   .carousel-track {
-    height: 220px;
+    height: 300px;
   }
   
   .carousel-button {
