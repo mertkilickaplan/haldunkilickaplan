@@ -91,6 +91,38 @@ function initCarousel() {
     {
       src: 'assets/carousel-images/project5.jpg',
       alt: 'Proje İzolasyon Çalışması 5'
+    },
+    {
+      src: 'assets/carousel-images/project6.jpg',
+      alt: 'Proje İzolasyon Çalışması 6'
+    },
+    {
+      src: 'assets/carousel-images/project7.jpg',
+      alt: 'Proje İzolasyon Çalışması 7'
+    },
+    {
+      src: 'assets/carousel-images/project8.jpg',
+      alt: 'Proje İzolasyon Çalışması 8'
+    },
+    {
+      src: 'assets/carousel-images/project9.jpg',
+      alt: 'Proje İzolasyon Çalışması 9'
+    },
+    {
+      src: 'assets/carousel-images/project10.jpg',
+      alt: 'Proje İzolasyon Çalışması 10'
+    },
+    {
+      src: 'assets/carousel-images/project11.jpg',
+      alt: 'Proje İzolasyon Çalışması 11'
+    },
+    {
+      src: 'assets/carousel-images/project12.jpg',
+      alt: 'Proje İzolasyon Çalışması 12'
+    },
+    {
+      src: 'assets/carousel-images/project13.jpg',
+      alt: 'Proje İzolasyon Çalışması 13'
     }
   ];
   
