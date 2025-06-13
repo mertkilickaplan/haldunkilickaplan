@@ -3,24 +3,62 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Yalıtım Çözümleri</title>
+  <title>Yalıtım Çözümleri - Haldun Kılıçkaplan</title>
   <meta name="description" content="1982'den beri ses, ısı ve su izolasyonu konularında profesyonel yalıtım çözümleri sunuyoruz.">
 
   <!-- Open Graph Meta Tags -->
-  <meta property="og:title" content="Yalıtım Çözümleri">
+  <meta property="og:title" content="Yalıtım Çözümleri - Haldun Kılıçkaplan">
   <meta property="og:description" content="1982'den beri ses, ısı ve su izolasyonu konularında profesyonel yalıtım çözümleri sunuyoruz.">
   <meta property="og:image" content="/og-image.jpg">
-  <meta property="og:url" content="https://www.izkim.com.tr/">
+  <meta property="og:url" content="https://www.haldunkilickaplan.com/">
   <meta property="og:type" content="website">
 
   <!-- Twitter Card Meta Tags -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Yalıtım Çözümleri">
+  <meta name="twitter:title" content="Yalıtım Çözümleri - Haldun Kılıçkaplan">
   <meta name="twitter:description" content="1982'den beri ses, ısı ve su izolasyonu konularında profesyonel yalıtım çözümleri sunuyoruz.">
   <meta name="twitter:image" content="/og-image.jpg">
-  <meta name="twitter:url" content="https://www.izkim.com.tr/">
+  <meta name="twitter:url" content="https://www.haldunkilickaplan.com/">
 
-  <link rel="stylesheet" href="styles.css">
+  <!-- Preconnect to external domains -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- Preload critical assets -->
+  <link rel="preload" href="styles.css" as="style">
+  <link rel="preload" href="scripts.js" as="script">
+  <link rel="preload" href="assets/logo.png" as="image" type="image/png">
+
+  <!-- Critical CSS -->
+  <style>
+    /* Critical CSS for above-the-fold content */
+    * {margin: 0; padding: 0; box-sizing: border-box;}
+    html {scroll-behavior: smooth;}
+    body {font-family: 'Inter', sans-serif; color: #333; background-color: #fff; line-height: 1.6;}
+    section {padding: 4rem 2rem;}
+    section h2 {font-size: 2rem; margin-bottom: 1rem; color: #222;}
+    #hero {padding: 3rem 0; background: linear-gradient(to bottom, #f9f9f9, #fff);}
+    .hero-container {display: flex; align-items: center; justify-content: center; max-width: 1200px; margin: 0 auto; width: 100%; padding: 0 2rem;}
+    .hero-content {text-align: center; padding: 1rem; max-width: 800px; margin: 0 auto;}
+    .hero-content h2 {font-size: 2.5rem; font-weight: 700; color: #222222; margin-bottom: 0.75rem;}
+    .hero-description {font-size: 1.25rem; font-weight: 500; color: #444; margin-bottom: 0.75rem; max-width: 700px; margin-left: auto; margin-right: auto;}
+    .hero-header {display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; position: relative;}
+    .hero-year-badge {display: inline-block; background-color: rgba(255, 206, 0, 0.15); color: #222; font-size: 0.9rem; font-weight: 600; padding: 0.4rem 0.8rem; border-radius: 50px; margin-left: 1rem; border: 1px solid rgba(255, 206, 0, 0.3);}
+    @media (max-width: 768px) {
+      #hero {padding: 1rem 0;}
+      .hero-container {padding: 0 1rem;}
+      .hero-content {padding: 1.5rem;}
+      .hero-content h2 {font-size: 2rem;}
+      .hero-description {font-size: 1.1rem;}
+      .hero-header {flex-direction: column;}
+      .hero-year-badge {position: relative; top: 0; right: auto; transform: none; display: inline-block; margin-top: 0.5rem;}
+    }
+  </style>
+
+  <!-- Non-critical CSS with media attribute -->
+  <link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="styles.css"></noscript>
+  
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
 
@@ -30,10 +68,10 @@
   {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "İZ-Kim",
+    "name": "Haldun Kılıçkaplan",
     "description": "Ses, ısı ve su izolasyonu konularında profesyonel yalıtım çözümleri",
-    "url": "https://www.izkim.com.tr/",
-    "logo": "https://www.izkim.com.tr/logo.png",
+    "url": "https://www.haldunkilickaplan.com/",
+    "logo": "https://www.haldunkilickaplan.com/assets/logo.png",
     "contactPoint": [{
       "@type": "ContactPoint",
       "telephone": "+90-555-555-5555",
@@ -42,9 +80,9 @@
       "availableLanguage": ["Turkish", "English"]
     }],
     "sameAs": [
-      "https://www.facebook.com/izkim",
-      "https://www.instagram.com/izkim",
-      "https://www.linkedin.com/company/izkim"
+      "https://www.facebook.com/haldunkilickaplan",
+      "https://www.instagram.com/haldunkilickaplan",
+      "https://www.linkedin.com/company/haldunkilickaplan"
     ]
   }
   </script>
@@ -547,6 +585,8 @@
   </section>
 
   <!-- Footer will go here -->
-  <script src="scripts.js"></script>
+  
+  <!-- JavaScript'i defer ile yükleme -->
+  <script src="scripts.js" defer></script>
 </body>
-</html> 
+</html>
